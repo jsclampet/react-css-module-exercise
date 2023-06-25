@@ -1,34 +1,50 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import Button from "./Components/Button";
+import Like from "./Components/Like";
+import NavBar from "./Components/NavBar/NavBar";
+import Cart from "./Components/Cart/Cart";
+import Game from "./Components/Game/Game";
+import Pizza from "./Components/Pizza/Pizza";
+import Kart from "./Components/Kart/Kart";
+import ExpandableTxt from "./Components/ExpandableTxt/ExpandableTxt";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [cartItems, setCartItems] = useState(["product 1", "product 2"]);
+
+  const handleClear = () => {
+    setCartItems([]);
+  };
 
   return (
-    <div className="App">
+    <>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <NavBar cartItemsCount={cartItems.length} />
+        <Cart cartItems={cartItems} handleClear={handleClear} />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+      <hr />
+      <Game />
+      <hr />
+      <Pizza />
+      <hr />
+      <Kart />
+      <hr />
+      <hr />
+      <hr />
+      <hr />
+      <ExpandableTxt maxChars={10}>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab voluptate
+        distinctio, corporis accusamus voluptates similique impedit atque
+        laborum vitae iste, iure id! Eum inventore, consectetur, cupiditate
+        porro modi tempora, sequi quae recusandae doloremque quas earum.
+        Distinctio aliquid culpa, quasi quisquam praesentium minima ipsam, ab
+        blanditiis, dolores qui facere quod ex voluptatibus temporibus similique
+        at unde necessitatibus repellendus eos natus deleniti eum accusamus!
+        Laudantium unde nostrum animi perspiciatis minus, iusto sint! Tempora
+        illo iusto molestias quos. Deleniti eius molestiae cum culpa!
+      </ExpandableTxt>
+    </>
+  );
 }
 
-export default App
+export default App;
